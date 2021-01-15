@@ -9,7 +9,7 @@ const Alert = (props) => {
 Alert.propTypes = {};
 
 const mapStateToProps = (state) => ({
-  alert,
+  alerts: state.alert,
 }); // Mapping the redux state to a prop in this component in case we have an access to it
 
 export default connect()(Alert);
