@@ -5,8 +5,7 @@ const auth = require('../../middleware/auth');
 
 const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
-const User = require('../../models/user');
-
+const User = require('../../models/User');
 // @route  POST api/posts
 // @desc   Create a post
 // @access Private
