@@ -6,6 +6,8 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -57,6 +59,22 @@ export default function (state = initialState, action) {
             post._id === payload.id ? { ...post, likes: payload.likes } : post // { ...post, likes: payload.likes } post'un diğer parçaları aynı kalsın biz sadece likes kısmını manipule etmek istiyoruz.
         ),
         loading: false, // Request is done
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
+        loading: false,
       };
     default:
       return state;
