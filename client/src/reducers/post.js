@@ -1,0 +1,64 @@
+/* eslint-disable */
+import {
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+  DELETE_POST,
+  ADD_POST,
+  GET_POST,
+} from '../actions/types';
+
+const initialState = {
+  posts: [], // This will take
+  post: null, // This will take
+  loading: true, // This will take
+  error: {},
+};
+
+export default function (state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false, // Request is done
+      };
+    case GET_POST:
+      return {
+        ...state,
+        posts: payload,
+        loading: false,
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts], // Add our payload (content, data, post, ...)
+        loading: false,
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== payload),
+        loading: false,
+      };
+    case GET_POSTS:
+      return {
+        ...state,
+        error: payload,
+        loading: false, // Request is done
+      };
+    case UPDATE_LIKES:
+      return {
+        ...state,
+        posts: state.posts.map(
+          (post) =>
+            post._id === payload.id ? { ...post, likes: payload.likes } : post // { ...post, likes: payload.likes } post'un diğer parçaları aynı kalsın biz sadece likes kısmını manipule etmek istiyoruz.
+        ),
+        loading: false, // Request is done
+      };
+    default:
+      return state;
+  }
+}
