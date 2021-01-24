@@ -3,7 +3,7 @@
 # Courses: 
 ## https://www.udemy.com/course/mern-stack-front-to-back/
 
-# These are the websites that I learnt to build in courses:
+# These are the websites that I learned to build in courses:
 ## https://dsnfs.herokuapp.com/
 
 # What did I learnt
